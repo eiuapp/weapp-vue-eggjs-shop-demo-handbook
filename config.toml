@@ -1,0 +1,84 @@
+baseurl = "https://eiuapp.github.io/weapp-vue-eggjs-shop-demo-handbook/"
+# languageCode = "zh-cn"
+languageCode = "en-US"
+# defaultContentLanguage = "Cn"
+defaultContentLanguage = "en"
+
+title = "Eiuapp Learn Documentation"
+theme = "hugo-theme-learn"
+# themesdir = "../.."
+metaDataFormat = "yaml"
+defaultContentLanguageInSubdir= true
+
+uglyurls = true
+relativeURLs = false
+# title = "Hugo学习笔记"
+# theme = "hugo-material-docs"
+canonifyurls = true
+preserveTaxonomyNames = true
+disablePathToLower = true
+
+# Enable Google Analytics by entering your tracking id
+googleAnalytics = "c7442f5794ea2abb71c6ff05dc0b8779"
+
+[params]
+  editURL = "https://github.com/eiuapp/weapp-vue-eggjs-shop-demo-handbook/edit/master/content/"
+  description = "Documentation for Learn"
+  # author = "Mathieu Cornic"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+	# General information
+	author = "曾云龙"
+	keywords = "blog,学习笔记,learn,主题"
+	# description = "Hugo是由Go语言实现的静态网站生成器。这份hugo学习笔记，记录hugo的基本使用和常用技巧，还有推荐的hugo主题。"
+	copyright = "版权所有，转载请注明出处"
+
+	# Repository
+	provider = "GitHub"
+	repo_url = "https://github.com/eiuapp/weapp-vue-eggjs-shop-demo-handbook"
+
+	version = ""
+	logo = "images/logo.png"
+	favicon = ""
+
+	permalink = "#"
+
+    # reward button, comment this to disable it
+    reward = true
+
+	# Custom assets
+	custom_css = []
+	custom_js  = []
+
+	# Syntax highlighting theme
+	highlight_css  = ""
+
+	[params.palette]
+		primary = "red"
+		accent  = "teal"
+
+	[params.font]
+		text = "Ubuntu"
+		code = "Ubuntu Mono"
+
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[Languages]
+[Languages.en]
+title = "Documentation for Hugo Learn Theme"
+weight = 1
+languageName = "English"
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-fw fa-github'></i> GitHub repo"
+identifier = "ds"
+url = "https://github.com/eiuapp/weapp-vue-eggjs-shop-demo-handbook"
+weight = 10
+
+[social]
+	twitter = ""
+	github  = "eiuapp"
+	email   = "273412935@qq.com"
