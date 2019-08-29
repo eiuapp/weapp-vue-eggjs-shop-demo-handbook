@@ -1,0 +1,19 @@
+digraph G { 
+  /*
+    如何从mysql的设计表中复制内容后，快速得到 egg/schema 中的 js 文件
+  */
+
+    start->a0->a1->a2->a3;
+    a0[label="(手工)mysql的设计表中复制内容到table.txt"];
+    a1[label="table.txt转成csv文件（TAB转成逗号comma）"];
+    a2[label="csv经node程序转成类json"];
+    b0[label="schema的前9行，插入最终js文件"];
+    a3[label="json中除掉第1行，插入最终js文件"];
+    b1[label="schema的最后一行，插入最终js文件"];
+    b0->a3;
+    a3->b1;
+    b1->end;
+        
+    start[shape=Mdiamond];
+    end[shape=Msquare];                                                                                                                                                   
+}
