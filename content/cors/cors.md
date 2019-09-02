@@ -42,3 +42,42 @@ npm i --save egg-cors
       allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
     }
 ```
+
+## 服务器端header中添加Access-Control-Expose-Headers
+
+### （背景）vue网络请求怎么获取 Response中的自定义header参数
+
+因为后端，把 token 放在了 response.header 中的 'Authorization' 字段中, vuejs 正常无法获取，此时，
+
+vue网络请求怎么获取 Response中的自定义header参数？
+
+- http://tieba.baidu.com/p/5316981578?traceid= 
+
+找到 
+
+```
+如果你想在客户端app中获取自定义的header信息，需要在服务器端header中添加Access-Control-Expose-Headers
+```
+
+### 操作
+
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+- https://github.com/eggjs/egg-cors#configuration
+
+找到 
+
+- https://github.com/koajs/cors#corsoptions
+
+所以，配置 `app/config/config.default.json` 中的 `cors`, 加入`exposeHeaders: 'Authorization'`
+
+效果如下：
+
+```
+    // cors
+    cors: {
+      origin:'http://localhost:3000',
+      credentials: true,
+      allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+      exposeHeaders: 'Authorization'
+    }
+```
