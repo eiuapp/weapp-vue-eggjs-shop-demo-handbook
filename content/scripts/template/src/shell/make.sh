@@ -80,13 +80,18 @@ echo "start change the file model name "
 sed -i "s/pms_grant_restricted_stock_unit/${TABLE,,}/g" ${modelFilePath} 
 echo "end change the file model name, but you must fix the updateField by hand."
 
+# schema
+# cd ${WORK_PATH}
 
-# cp temp.bak.js ${TARGET_PATH}/app/model/${MS}/${TABLE}.js
+cd ${WORK_PATH}
+cd ${TEMPLATE_PATH}
+cd schema
 
-# # schema
-# cd WORK_PATH
-# cd TEMPLATE_PATH
-# cd schema
+echo "start schema shell script"
+cd ../../../../schema
+./schema.sh ./test.txt
+echo "end schema shell script"
 
-# cp temp.bak.js ${TARGET_PATH}/app/schema/${TABLE}.js
+schemaFilePath="${TARGET_PATH}/app/schema/${TABLE}.js"
+cp ${WORK_PATH}/../../../schema/test.js ${TARGET_PATH}/app/schema/${TABLE}.js
 

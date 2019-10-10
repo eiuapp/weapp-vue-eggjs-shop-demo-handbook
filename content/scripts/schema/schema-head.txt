@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = app => {
-  const { STRING, BIGINT, INTEGER, DECIMAL, DATE, DATEONLY } = app.Sequelize;
+  const { STRING, BIGINT, INTEGER, DECIMAL, DATE, DATEONLY, ENUM, CHAR } = app.Sequelize;
 
   return {
-    id: { type: BIGINT(20), allowNull: true,
+    id: { type: BIGINT(20), allowNull: false,
       primaryKey: true,
       autoIncrement: true },
     

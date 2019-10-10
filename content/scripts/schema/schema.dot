@@ -3,6 +3,41 @@ digraph G {
     如何从mysql的设计表中复制内容后，快速得到 egg/schema 中的 js 文件
   */
 
+  
+  /*
+    subgraph cluster0 {
+        node[style=filled, color=white];
+        style=filled;
+        color=lightgrey;
+        a0[label="`.gitlab-ci.yml`中指定script"];
+        a1[label="`.gitlab-ci.yml`中指定tag"];
+        a2[label="`.gitlab-ci.yml`"];
+        a3[label="git push"];
+        a0->a2;
+        a1->a2;
+        a2->a3
+        label="工程";
+    }   
+    subgraph cluster1 {
+        node[style=filled];
+        color=blue;
+        b0->b1->b2;
+        b0[label="手工执行的命令写入`shell script`"]
+        b1[label="`shell script`写成`.gitlab-ci.yml`中的`script`"]
+        b2[label="`shell script`写入代码仓库`tl-lvchuang-scripts`"]
+        label="Shell";
+    }
+    subgraph cluster2 {
+        node[style=filled, color=white];
+        style=filled;
+        color=lightgrey;
+        c0[label="工程加入tag对应的gitlab runner"];
+        //c0->c1;
+        label="gitlab";
+    } 
+   */     
+
+
     start->a0->a1->a2->a3;
     a0[label="(手工)mysql的设计表中复制内容到table.txt"];
     a1[label="table.txt转成csv文件（TAB转成逗号comma）"];
@@ -13,6 +48,16 @@ digraph G {
     b0->a3;
     a3->b1;
     b1->end;
+
+
+
+
+  /*
+    start->c0;
+    b2->a0;
+    c0->a1;
+    a3->end;
+   */ 
         
     start[shape=Mdiamond];
     end[shape=Msquare];                                                                                                                                                   

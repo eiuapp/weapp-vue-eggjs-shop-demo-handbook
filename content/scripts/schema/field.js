@@ -1,5 +1,5 @@
-var fs = require('fs');
-var readline = require('readline');
+const fs = require('fs');
+const readline = require('readline');
 
 /*
 * 按行读取文件内容
@@ -7,24 +7,24 @@ var readline = require('readline');
 * 参数：fReadName:文件名路径
 *      callback:回调函数
 * */
-function readFileToArr(fReadName,callback){
-    var fRead = fs.createReadStream(fReadName);
-    var objReadline = readline.createInterface({
-        input:fRead
-    });
-    var arr = new Array();
-    objReadline.on('line',function (line) {
-        arr.push(line);
-        //console.log('line:'+ line);
-    });
-    objReadline.on('close',function () {
-       // console.log(arr);
-        callback(arr);
-    });
+function readFileToArr(fReadName, callback) {
+  const fRead = fs.createReadStream(fReadName);
+  const objReadline = readline.createInterface({
+    input: fRead,
+  });
+  const arr = new Array();
+  objReadline.on('line', function(line) {
+    arr.push(line);
+    // console.log('line:'+ line);
+  });
+  objReadline.on('close', function() {
+    // console.log(arr);
+    callback(arr);
+  });
 }
 
-readFileToArr("./field.txt", (data) => {
-  console.log("data ", data) 
+readFileToArr('./field.txt', data => {
+  console.log('data ', data);
   // let ret = {}
   // for (line of data) {
   //   console.log(line)
@@ -34,44 +34,44 @@ readFileToArr("./field.txt", (data) => {
   //   // console.log(ret[arr[0]])
 
   //   // ret[line] = {}
-    
+
   // }
   // console.log(ret)
-})
+});
 
-function typeFormat(str, value){
-  let ret = str
+function typeFormat(str, value) {
+  let ret = str;
   switch (str) {
     case 'bigint':
-      ret = `BIGINT(${value})`
-      break
+      ret = `BIGINT(${value})`;
+      break;
     case 'varchar':
-      ret = `STRING(${value})`
-      break
+      ret = `STRING(${value})`;
+      break;
     case 'int':
-      ret = `INTEGER(${value})`
-      break
+      ret = `INTEGER(${value})`;
+      break;
     case 'text':
-      ret = `TEXT('tiny')`
-      break
+      ret = 'TEXT(\'tiny\')';
+      break;
     case 'datetime':
-      ret = `DATE`
-      break
+      ret = 'DATE';
+      break;
     case 'decimal':
-      ret = `DECIMAL(${value})`
-      break
-      
+      ret = `DECIMAL(${value})`;
+      break;
+
   }
-  return ret
+  return ret;
 }
 
-function allowNull(str){
-  let ret = str
-  if (str === 'False'){
-    ret = 'false'
+function allowNull(str) {
+  let ret = str;
+  if (str === 'False') {
+    ret = 'false';
   }
-  if (str === 'True'){
-    ret = 'true'
+  if (str === 'True') {
+    ret = 'true';
   }
-  return ret
+  return ret;
 }

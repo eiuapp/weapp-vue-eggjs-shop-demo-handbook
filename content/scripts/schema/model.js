@@ -42,28 +42,28 @@ readFileToArr('./model.txt', data => {
   console.log(ret);
 });
 
-function typeFormat(str, value){
-  let ret = str
+function typeFormat(str, value) {
+  let ret = str;
   switch (str) {
     case 'bigint':
-      ret = `BIGINT(${value})`
-      break
+      ret = `BIGINT(${value})`;
+      break;
     case 'varchar':
-      ret = `STRING(${value})`
-      break
+      ret = `STRING(${value})`;
+      break;
     case 'int':
-      ret = `INTEGER(${value})`
-      break
+      ret = `INTEGER(${value})`;
+      break;
     case 'text':
-      ret = `TEXT('tiny')`
-      break
+      ret = 'TEXT(\'tiny\')';
+      break;
     case 'datetime':
-      ret = `DATE`
-      break
+      ret = 'DATE';
+      break;
     case 'decimal':
-      ret = `DECIMAL(${value})`
-      break
-      
+      ret = `DECIMAL(${value})`;
+      break;
+
   }
   return ret;
 }
