@@ -1,8 +1,8 @@
 // https://blog.csdn.net/yajie_china/article/details/79407851
 // node.js使用readline按行读取文件内容
 
-var fs = require('fs');
-var readline = require('readline');
+const fs = require('fs');
+const readline = require('readline');
 
 /*
 * 按行读取文件内容
@@ -10,37 +10,37 @@ var readline = require('readline');
 * 参数：fReadName:文件名路径
 *      callback:回调函数
 * */
-function readFileToArr(fReadName,callback){
-    var fRead = fs.createReadStream(fReadName);
-    var objReadline = readline.createInterface({
-        input:fRead
-    });
-    var arr = new Array();
-    objReadline.on('line',function (line) {
-        arr.push(line);
-        //console.log('line:'+ line);
-    });
-    objReadline.on('close',function () {
-       // console.log(arr);
-        callback(arr);
-    });
+function readFileToArr(fReadName, callback) {
+  const fRead = fs.createReadStream(fReadName);
+  const objReadline = readline.createInterface({
+    input: fRead,
+  });
+  const arr = new Array();
+  objReadline.on('line', function(line) {
+    arr.push(line);
+    // console.log('line:'+ line);
+  });
+  objReadline.on('close', function() {
+    // console.log(arr);
+    callback(arr);
+  });
 }
 
-readFileToArr("./model.txt", (data) => {
-  console.log("data ", data) 
-  let ret = {}
+readFileToArr('./model.txt', data => {
+  console.log('data ', data);
+  const ret = {};
   for (line of data) {
-    console.log(line)
-    let arr = line.trim().split(',')
+    console.log(line);
+    const arr = line.trim().split(',');
 
-    ret[arr[0]] = { 'type' : typeFormat(arr[1], arr[2]), 'allowNull': allowNull(arr[3]) }
+    ret[arr[0]] = { type: typeFormat(arr[1], arr[2]), allowNull: allowNull(arr[3]) };
     // console.log(ret[arr[0]])
 
     // ret[line] = {}
-    
+
   }
-  console.log(ret)
-})
+  console.log(ret);
+});
 
 function typeFormat(str, value){
   let ret = str
@@ -65,16 +65,16 @@ function typeFormat(str, value){
       break
       
   }
-  return ret
+  return ret;
 }
 
-function allowNull(str){
-  let ret = str
-  if (str === 'False'){
-    ret = 'false'
+function allowNull(str) {
+  let ret = str;
+  if (str === 'False') {
+    ret = 'false';
   }
-  if (str === 'True'){
-    ret = 'true'
+  if (str === 'True') {
+    ret = 'true';
   }
-  return ret
+  return ret;
 }
