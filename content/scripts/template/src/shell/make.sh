@@ -76,22 +76,56 @@ echo "
 model=`node ${WORK_PATH}/tuoFengToLine.js oms_order_item`
 echo "the model is: ${model}"
 
-echo "start change the file model name "
+echo "start change the file"
 sed -i "s/pms_grant_restricted_stock_unit/${TABLE,,}/g" ${modelFilePath} 
-echo "end change the file model name, but you must fix the updateField by hand."
+echo "end change the file"
+echo "you must by hand:
+    1. fix the updateField.
+  "
 
 # schema
-# cd ${WORK_PATH}
-
 cd ${WORK_PATH}
 cd ${TEMPLATE_PATH}
 cd schema
+schemaDirPath="${WORK_PATH}/../../../schema"
 
 echo "start schema shell script"
-cd ../../../../schema
+cd ${schemaDirPath}
 ./schema.sh ./test.txt
 echo "end schema shell script"
 
 schemaFilePath="${TARGET_PATH}/app/schema/${TABLE}.js"
-cp ${WORK_PATH}/../../../schema/test.js ${TARGET_PATH}/app/schema/${TABLE}.js
+cp ${schemaDirPath}/test.js ${TARGET_PATH}/app/schema/${TABLE}.js
 
+echo "start change the file"
+sed -i "s/pms_grant_restricted_stock_unit/${TABLE,,}/g" ${modelFilePath} 
+echo "end change the file"
+
+echo "you must by hand:
+    1. fix the updateField.
+    2. if have enum item, you must fill enum if necessary.
+  "
+
+# test
+cd ${WORK_PATH}
+cd ${TEMPLATE_PATH}
+cd test
+testFilePath="${TARGET_PATH}/test/controller/${MS}/${TABLE}.test.js"
+cp temp.bak.js ${testFilePath}
+
+echo "start change the file"
+sed -i "s/pms\/pms_stage_option.test.js/${MS}\/${TABLE}.test.js/g" ${testFilePath} 
+echo "end change the file"
+echo "you must by hand:
+    1. fill router.
+    2. fill snPrefix and rule field if necessary.
+  "
+
+# print manual info 
+echo "------------------------------------------------------"
+cd ${schemaDirPath}
+for line in `cat ./field.txt`; do
+  echo "${line},"
+done
+echo "------------------------------------------------------"
+./field.sh 

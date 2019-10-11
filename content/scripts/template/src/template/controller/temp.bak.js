@@ -36,23 +36,17 @@ class ThirdController extends SecondController {
    */
   async saveNew() {
     const rule = {
-      name: 'string',
+      // name: 'string',
       creator_id: 'int',
-      employee_sn: 'string',
-      stage_sn: 'string',
-      stage_status: 'string',
+      // employee_sn: 'string',
+      // stage_sn: 'string',
+      // stage_status: 'string',
       sn: 'string',
       plan_id: 'int?',
       description: 'string?',
       status: 'string?',
     };
     const snPrefix = 'unit_grant';
-    // 如果没有传入 plan_status ，则使用默认值。default: 'todo'
-    this.ctx.request.body = this.ctx.helper.addAttributeToRequestBody(this.ctx.request.body, 'plan_status', 'todo');
-    // 如果没有传入 stage_status ，则使用默认值。default: 'todo'
-    this.ctx.request.body = this.ctx.helper.addAttributeToRequestBody(this.ctx.request.body, 'stage_status', 'todo');
-    // 如果没有传入 exercicse_status ，则使用默认值。default: 'todo'
-    this.ctx.request.body = this.ctx.helper.addAttributeToRequestBody(this.ctx.request.body, 'exercicse_status', 'nonexistent');
     await this.ctx.helper.controller.saveNew(this, rule, snPrefix);
   }
   /**
