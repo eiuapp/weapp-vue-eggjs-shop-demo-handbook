@@ -44,28 +44,8 @@ module.exports = app => {
       last_modifier_name,
       last_modified_time,      
     } = params;
-    const updateField = {
-      sn,
-      stage_sn,
-      employee_sn,
-      plan_grant_date,
-      plan_grant_price,
-      plan_grant_number,
-      plan_own_date,
-      plan_end_date,
-      plan_user_id,
-      exercicse_status,
-      stage_status,
-      plan_status,
-      name,
-      description,
-      delete_status,
-      enable_status,
-      status,
-      last_modifier_id,
-      last_modifier_name,
-      last_modified_time,  
-    };
+    const updateField = Object.assign({},params);
+    delete updateField['id'];
     const result = await Model.update(updateField, { where: { id } });
 
     checkUpdate(result);
