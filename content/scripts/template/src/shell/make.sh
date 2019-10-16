@@ -26,7 +26,7 @@ echo "
     2. fix the rule by hand
   "
 
-service=`node ${WORK_PATH}/tuoFengToLine.js oms_order_item`
+service=`node ${WORK_PATH}/tuoFengToLine.js ${TABLE}`
 echo "the service is: ${service}"
 
 echo "start change the file service name "
