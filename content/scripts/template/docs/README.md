@@ -34,6 +34,8 @@
 - snPrefix
 - ruleFields
 
+---
+
 ### 数据库字段增减
 
 影响以下几个地方：
@@ -49,6 +51,8 @@
       rule
 5. test
    
+---
+
 ### 新增一个表
 
 #### router
