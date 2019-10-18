@@ -89,6 +89,7 @@ describe(testFilePath, () => {
     }
     {
       requestBodyObj = {
+        ...ruleFields,
         description: '12345678912',
       };
       it('should status 500 and get the body', createFourthWorker(url, requestBodyObj));
@@ -114,7 +115,7 @@ describe(testFilePath, () => {
         ...myTokenDataObj,
         delete_status: 0,
       };
-      it('saveNew a enable_status = 0 plan, should status 200 and get the body', deleteSecondWorker(url, requestBodyObj, requestBodyBackObj));
+      it('saveNew a delete_status = 1 and enable_status = 0 plan, should status 200 and get the body', deleteSecondWorker(url, requestBodyObj, requestBodyBackObj));
     }
   });
 
