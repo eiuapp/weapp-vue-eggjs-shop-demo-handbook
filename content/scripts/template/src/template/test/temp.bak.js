@@ -35,23 +35,6 @@ describe(testFilePath, () => {
 
   afterEach(mock.restore);
 
-  describe('test get use GET ' + url + '/1', () => {
-    {
-      it('should status 200 and get the body', getFirstWorker(url));
-    }
-  });
-
-  describe('test getListAndCountAll use GET ' + url + '/list', () => {
-    {
-      const listUrl = url + '/list';
-      const listRequestObj = {
-        pageNum: '1',
-        pageSize: '30',
-      };
-      it('should status 200 and get the body', listWorker(listUrl, listRequestObj));
-    }
-  });
-
   describe('test saveNew use POST ' + url + '/create', () => {
     {
       requestBodyObj = {
@@ -61,7 +44,7 @@ describe(testFilePath, () => {
         sn: snPrefix + '_' + genRandomString(10),
         creator_id: '1',
       };
-      it('should status 200 and get the body', createFirstWorker(url, requestBodyObj));
+      it('saveNew, should status 200 and get the body', createFirstWorker(url, requestBodyObj));
     }
     {
       const name = genRandomString(10);
@@ -96,6 +79,23 @@ describe(testFilePath, () => {
     }
   });
 
+  describe('test get use GET ' + url + '/1', () => {
+    {
+      it('GET /1, should status 200 and get the body', getFirstWorker(url));
+    }
+  });
+
+  describe('test getListAndCountAll use GET ' + url + '/list', () => {
+    {
+      const listUrl = url + '/list';
+      const listRequestObj = {
+        pageNum: '1',
+        pageSize: '30',
+      };
+      it('GET list, should status 200 and get the body', listWorker(listUrl, listRequestObj));
+    }
+  });
+
   describe('test updateDeleteStatus use POST ' + url + '/delete/:id', () => {
     {
       requestBodyObj = {
@@ -105,7 +105,7 @@ describe(testFilePath, () => {
         ...myTokenDataObj,
         delete_status: 0,
       };
-      it('saveNew a enable_status = 0 plan, should status 200 and get the body', deleteFirstWorker(url, requestBodyObj, requestBodyBackObj));
+      it('updateDeleteStatus, should status 200 and get the body', deleteFirstWorker(url, requestBodyObj, requestBodyBackObj));
     }
     {
       requestBodyObj = {
@@ -115,7 +115,7 @@ describe(testFilePath, () => {
         ...myTokenDataObj,
         delete_status: 0,
       };
-      it('saveNew a delete_status = 1 and enable_status = 0 plan, should status 200 and get the body', deleteSecondWorker(url, requestBodyObj, requestBodyBackObj));
+      it('updateDeleteStatus, should status 200 and get the body', deleteSecondWorker(url, requestBodyObj, requestBodyBackObj));
     }
   });
 
@@ -129,7 +129,7 @@ describe(testFilePath, () => {
         ...myTokenDataObj,
         description: 'test.back',
       };
-      it('saveNew a enable_status = 0 plan, should status 200 and get the body', updateFirstWorker(url, requestBodyObj, requestBodyBackObj));
+      it('update, should status 200 and get the body', updateFirstWorker(url, requestBodyObj, requestBodyBackObj));
     }
   });
 
