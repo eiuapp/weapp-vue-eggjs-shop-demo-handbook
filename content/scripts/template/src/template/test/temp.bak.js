@@ -65,7 +65,6 @@ describe(testFilePath, () => {
         ...ruleFields,
         name,
         sn: snPrefix + '_' + genRandomString(10),
-        delete_status: 1,
         enable_status: 0,
       };
       it('saveNew a enable_status = 0 plan, should status 200 and get the body', createThirdWorker(url, requestBodyObj));
