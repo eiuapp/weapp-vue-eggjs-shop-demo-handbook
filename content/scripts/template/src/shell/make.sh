@@ -1,4 +1,15 @@
 #!/bin/bash
+# example
+# ./make.sh /home/ubuntu/code-server/chat/chat-admin-server oms oms_order_item
+# ./make.sh /home/ubuntu/code-server/chat/chat-admin-server oms oms_order_item
+# ./make.sh /home/ubuntu/code-server/chat/chat-admin-server oms oms_order_item
+# ./make.sh /home/ubuntu/code-server/fangyuan/fangyuan-server pms pms_trade_option
+# ./make.sh /home/ubuntu/code-server/fangyuan/fangyuan-server pms pms_trade_restricted_stock
+# ./make.sh /home/ubuntu/code-server/fangyuan/fangyuan-server pms pms_trade_option
+# ./make.sh /home/ubuntu/code-server/fangyuan/fangyuan-server pms pms_trade_restricted_stock
+# ./make.sh /home/ubuntu/code-server/fangyuan/fangyuan-server pms pms_trade_restricted_stock_unit
+# ./make.sh /home/ubuntu/code-server/fangyuan/fangyuan-server pms pms_trade_sars
+# ./make.sh /home/ubuntu/code-server/fangyuan/fangyuan-server bms bms_broker_company
 
 WORK_PATH=$(dirname $(readlink -f $0))
 TEMPLATE_PATH="../template/"
