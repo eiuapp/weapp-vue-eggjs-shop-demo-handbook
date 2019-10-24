@@ -44,7 +44,7 @@ describe(testFilePath, () => {
         sn: snPrefix + '_' + genRandomString(10),
         creator_id: '1',
       };
-      it('saveNew, should status 200 and get the body', createFirstWorker(url, requestBodyObj));
+      it('createFirstWorker, saveNew, should status 200 and get the body', createFirstWorker(url, requestBodyObj));
     }
     {
       const name = genRandomString(10);
@@ -56,7 +56,7 @@ describe(testFilePath, () => {
         delete_status: 1,
         enable_status: 0,
       };
-      it('saveNew a delete_status = 1 plan, should status 200 and get the body', createSecondWorker(url, requestBodyObj));
+      it('createSecondWorker, saveNew a delete_status = 1 plan, should status 200 and get the body', createSecondWorker(url, requestBodyObj));
     }
     {
       const name = genRandomString(10);
@@ -67,20 +67,20 @@ describe(testFilePath, () => {
         sn: snPrefix + '_' + genRandomString(10),
         enable_status: 0,
       };
-      it('saveNew a enable_status = 0 plan, should status 200 and get the body', createThirdWorker(url, requestBodyObj));
+      it('createThirdWorker, saveNew a enable_status = 0 plan, should status 200 and get the body', createThirdWorker(url, requestBodyObj));
     }
     {
       requestBodyObj = {
         ...ruleFields,
         description: '12345678912',
       };
-      it('should status 500 and get the body', createFourthWorker(url, requestBodyObj));
+      it('createFourthWorker, should status 500 and get the body', createFourthWorker(url, requestBodyObj));
     }
   });
 
   describe('test get use GET ' + url + '/1', () => {
     {
-      it('GET /1, should status 200 and get the body', getFirstWorker(url));
+      it('getFirstWorker, GET /1, should status 200 and get the body', getFirstWorker(url));
     }
   });
 
@@ -91,7 +91,7 @@ describe(testFilePath, () => {
         pageNum: '1',
         pageSize: '30',
       };
-      it('GET list, should status 200 and get the body', listWorker(listUrl, listRequestObj));
+      it('listWorker, GET list, should status 200 and get the body', listWorker(listUrl, listRequestObj));
     }
   });
 
@@ -104,7 +104,7 @@ describe(testFilePath, () => {
         ...myTokenDataObj,
         delete_status: 0,
       };
-      it('updateDeleteStatus, should status 200 and get the body', deleteFirstWorker(url, requestBodyObj, requestBodyBackObj));
+      it('deleteFirstWorker, should status 200 and get the body', deleteFirstWorker(url, requestBodyObj, requestBodyBackObj));
     }
     {
       requestBodyObj = {
@@ -114,7 +114,7 @@ describe(testFilePath, () => {
         ...myTokenDataObj,
         delete_status: 0,
       };
-      it('updateDeleteStatus, should status 200 and get the body', deleteSecondWorker(url, requestBodyObj, requestBodyBackObj));
+      it('deleteSecondWorker, should status 200 and get the body', deleteSecondWorker(url, requestBodyObj, requestBodyBackObj));
     }
   });
 
@@ -128,7 +128,7 @@ describe(testFilePath, () => {
         ...myTokenDataObj,
         description: 'test.back',
       };
-      it('update, should status 200 and get the body', updateFirstWorker(url, requestBodyObj, requestBodyBackObj));
+      it('updateFirstWorker, should status 200 and get the body', updateFirstWorker(url, requestBodyObj, requestBodyBackObj));
     }
   });
 
