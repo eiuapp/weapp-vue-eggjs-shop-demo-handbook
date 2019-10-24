@@ -4,7 +4,8 @@ module.exports = app => {
   const { Sequelize, model, getSortInfo, checkUpdate } = app;
   const { Op } = Sequelize;
   const ModelSchema = require('../../schema/pms_grant_restricted_stock_unit.js')(app);
-  const Model = model.define('pms_grant_restricted_stock_unit', ModelSchema);
+  const scope = require('../../extend/model/scope.js').scope;
+  const Model = model.define('pms_grant_restricted_stock_unit', ModelSchema, scope);
 
   /**
    * 新增用户
