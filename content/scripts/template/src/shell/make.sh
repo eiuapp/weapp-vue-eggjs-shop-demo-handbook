@@ -1,5 +1,6 @@
 #!/bin/bash
 # example
+# cd content/scripts/template/src/shell/
 # ./make.sh /home/ubuntu/code-server/chat/chat-admin-server oms oms_order_item
 # ./make.sh /home/ubuntu/code-server/chat/chat-admin-server oms oms_order_item
 # ./make.sh /home/ubuntu/code-server/chat/chat-admin-server oms oms_order_item
