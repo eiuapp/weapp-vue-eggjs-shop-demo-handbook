@@ -20,6 +20,7 @@ const updateFirstWorker = unittestObj.updateFirstWorker;
 const testFilePath = 'test/controller/pms/pms_stage_option.test.js'; // 测试文件路径
 let requestBodyObj = {};
 let requestBodyBackObj = {};
+const tableName = 'pms_stage_option';
 const url = '/option/stage'; // 请求url前面部分
 const snPrefix = 'option_stage'; // sn前缀
 const ruleFields = { // 程序必传参数
@@ -34,6 +35,6 @@ const ruleFields = { // 程序必传参数
 const describeBasic = require('../../../app/extend/helper/describe.js').describeBasic;
 
 describe(testFilePath, () => {
-  describeBasic(url, snPrefix, ruleFields, myTokenDataObj, myTokenDataKey, genRandomString, getFirstWorker, listWorker, createFirstWorker, createSecondWorker, createThirdWorker,
+  describeBasic(url, tableName, snPrefix, ruleFields, myTokenDataObj, myTokenDataKey, genRandomString, getFirstWorker, listWorker, createFirstWorker, createSecondWorker, createThirdWorker,
     createFourthWorker, deleteFirstWorker, deleteSecondWorker, updateFirstWorker, testFilePath ,requestBodyObj = {}, requestBodyBackObj = {});
 });
