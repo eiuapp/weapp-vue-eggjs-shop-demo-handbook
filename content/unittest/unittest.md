@@ -83,3 +83,21 @@ npm run test-local ./test/controller/user/common.test.js
       assert(JSON.parse(result.res.text).code === 0)
     });
 ```
+## 单元测试时,使用`ctx`对象
+
+有时,我们需要在 单元测试 中使用`ctx`中的对象,比如,使用`ctx.helper`中的函数.
+
+这时, 要把 `const ctx = app.mockContext();` 放在 `it` 中(放到了外面的位置,都报错了,why?)
+
+示例:
+
+```javascript
+describe(testFilePath, () => {
+  afterEach(mock.restore);
+  describe('test get use GET ' + url + '/1', () => {
+    {
+      it('should have role(user_role_id) return', async () => {
+        // 1. ctx.helper.fetchFirstTwoRowData 函数, 取出表中前2条 delete_status = 0 的记录，找出 id
+        const ctx = app.mockContext();
+        const {id} = await ctx.helper.fetchFirstTwoRowData(app, url);
+```
