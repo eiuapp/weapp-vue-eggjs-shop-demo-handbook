@@ -17,9 +17,9 @@ const deleteFirstWorker = unittestObj.deleteFirstWorker;
 const deleteSecondWorker = unittestObj.deleteSecondWorker;
 const updateFirstWorker = unittestObj.updateFirstWorker;
 
-const testFilePath = 'test/controller/pms/pms_stage_option.test.js'; // 测试文件路径
 let requestBodyObj = {};
 let requestBodyBackObj = {};
+const testFilePath = 'test/controller/pms/pms_stage_option.test.js'; // 测试文件路径
 const tableName = 'pms_stage_option';
 const url = '/option/stage'; // 请求url前面部分
 const snPrefix = 'option_stage'; // sn前缀
@@ -31,6 +31,8 @@ const ruleFields = { // 程序必传参数
   // delete_status: 1,
   // enable_status: 0,
 };
+
+const { fetchFirstTwoRowData } = require('../../../app/extend/helper/utils.js'); // 经常会取前2条记录
 
 const describeBasic = require('../../../app/extend/helper/describe.js').describeBasic;
 
