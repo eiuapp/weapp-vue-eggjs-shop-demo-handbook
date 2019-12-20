@@ -87,9 +87,13 @@ npm run test-local ./test/controller/user/common.test.js
 
 有时,我们需要在 单元测试 中使用`ctx`中的对象,比如,使用`ctx.helper`中的函数.
 
+### 解决
+
+参考 https://github.com/eggjs/egg/blob/master/docs/source/zh-cn/core/unittest.md#ctx
+
 这时, 要把 `const ctx = app.mockContext();` 放在 `it` 中(放到了外面的位置,都报错了,why?)
 
-示例:
+### 示例
 
 ```javascript
 describe(testFilePath, () => {
