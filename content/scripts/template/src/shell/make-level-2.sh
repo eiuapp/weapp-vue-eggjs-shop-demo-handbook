@@ -36,7 +36,7 @@ echo "
     1. line 15:
         this.ctxService = this.ctx.service.pms.pmsGrantRestrictedStockUnit;
       to
-        this.ctxService = this.ctx.service.${TABLE}
+        this.ctxService = this.ctx.service.${MS}.${TABLE}
     2. fix the rule by hand
   "
 
@@ -44,14 +44,14 @@ service=`node ${WORK_PATH}/tuoFengToLine.js ${TABLE}`
 echo "the service is: ${service}"
 
 echo "start change the file service name "
-sed -i "s/pms.pmsGrantRestrictedStockUnit/${service}/" ${controllerFilePath}
+sed -i "s/pms.pmsGrantRestrictedStockUnit/${MS}.${service}/" ${controllerFilePath}
 echo "end change the file service name, but you must fix the rule by hand."
 
 # service
 cd ${WORK_PATH}
 cd ${TEMPLATE_PATH}
 cd service
-serviceFilePath="${TARGET_PATH}/app/service/${TABLE}.js"
+serviceFilePath="${TARGET_PATH}/app/service/${MS}/${TABLE}.js"
 cp temp.bak.js ${serviceFilePath}
 echo "cp temp.bak.js ${serviceFilePath}"
 echo "
@@ -59,7 +59,7 @@ echo "
     1. line 35:
         this.ctxModel = this.app.model.Pms.PmsGrantRestrictedStockUnit;
       to
-        this.ctxModel = this.app.model.${TABLE};
+        this.ctxModel = this.app.model.${MS}.${TABLE};
     2. fix the tableFields by hand
   "
 model=`node ${WORK_PATH}/tuoFengToLine.js oms_order_item`
@@ -74,7 +74,7 @@ echo "end change the file model name, but you must fix the tableFields by hand."
 cd ${WORK_PATH}
 cd ${TEMPLATE_PATH}
 cd model
-modelFilePath="${TARGET_PATH}/app/model/${TABLE}.js"
+modelFilePath="${TARGET_PATH}/app/model/${MS}/${TABLE}.js"
 cp temp.bak.js ${modelFilePath}
 echo "cp temp.bak.js ${modelFilePath}"
 echo "

@@ -12,7 +12,22 @@
 # ./make.sh /home/ubuntu/code-server/fangyuan/fangyuan-server pms pms_trade_sars
 # ./make.sh /home/ubuntu/code-server/fangyuan/fangyuan-server bms bms_broker_company
 # cd content/scripts/template/src/shell/
-# ./make.sh /mnt/c/Users/a/Desktop/tianluo/fangyuan/src/fangyuan-server ums ums_interface
+# ./make-pg.sh /mnt/c/Users/a/Desktop/tianluo/fangyuan/src/fangyuan-server ums ums_interface
+
+# after run the command, you must do:
+# 1. model/
+#   1.1 change the file name
+#   1.2 fix `ModelSchema`, `scope`: delete `../`
+# 2. service/
+#   2.1 change the file name
+# 3. schema/
+#   3.1 replace `int4` to `INTEGER(20)`
+#   3.2 replace `timestamp` to `DATE`
+# 4. test/ 参考 `rms_register.test.js`
+#   4.1 replace `deleteFirstWorker` to `deleteFirstWorker410`
+#   4.2 replace `deleteSecondWorker` to `deleteSecondWorker410`
+#   4.3 replace `createFirstWorker`, `createFirstWorker`
+#   4.4 change `const testFilePath`, `const tableName`, `const url`, `const snPrefix`, `const ruleFields`
 
 WORK_PATH=$(dirname $(readlink -f $0))
 TEMPLATE_PATH="../template/"
@@ -66,7 +81,7 @@ model=`node ${WORK_PATH}/tuoFengToLine.js oms_order_item`
 echo "the service is: ${service}"
 
 echo "start change the file model name "
-sed -i "s/Pms.PmsGrantRestrictedStockUnit/${MS^}.${service^}/" ${serviceFilePath}
+sed -i "s/Pms.PmsGrantRestrictedStockUnit/${service^}/" ${serviceFilePath}
 echo "end change the file model name, but you must fix the tableFields by hand."
 
 
@@ -136,10 +151,10 @@ echo "you must by hand:
   "
 
 # print manual info
-echo "------------------------------------------------------"
-cd ${schemaDirPath}
-for line in `cat ./field.txt`; do
-    echo "${line}, // eslint-disable-line no-unused-vars"
-done
-echo "------------------------------------------------------"
-./field.sh
+# echo "------------------------------------------------------"
+# cd ${schemaDirPath}
+# for line in `cat ./field.txt`; do
+#     echo "${line}, // eslint-disable-line no-unused-vars"
+# done
+# echo "------------------------------------------------------"
+# ./field.sh
