@@ -5,6 +5,7 @@ const Controller = require('../../core/base_controller');
 /**
  * Controller - user merchant
  * @class
+ * @author tianluo
  */
 
 

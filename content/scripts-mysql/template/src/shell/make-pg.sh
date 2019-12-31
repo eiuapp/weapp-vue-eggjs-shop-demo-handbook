@@ -18,17 +18,15 @@
 # 1. model/
 #   1.1 change the file name
 #   1.2 fix `ModelSchema`, `scope`: delete `../`
-#   1.3 check the `Model.saveModify params`
 # 2. service/
-#   2.1 fix `this.ctxModel`
-#   2.2 check the `tableFields`
+#   2.1 change the file name
 # 3. schema/
 #   3.1 replace `int4` to `INTEGER(20)`
 #   3.2 replace `timestamp` to `DATE`
 # 4. test/ 参考 `rms_register.test.js`
 #   4.1 replace `deleteFirstWorker` to `deleteFirstWorker410`
 #   4.2 replace `deleteSecondWorker` to `deleteSecondWorker410`
-#   4.3 replace `createFirstWorker`, `createSecondWorker`
+#   4.3 replace `createFirstWorker`, `createFirstWorker`
 #   4.4 change `const testFilePath`, `const tableName`, `const url`, `const snPrefix`, `const ruleFields`
 
 WORK_PATH=$(dirname $(readlink -f $0))

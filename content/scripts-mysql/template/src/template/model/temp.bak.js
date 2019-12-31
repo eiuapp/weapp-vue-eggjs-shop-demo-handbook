@@ -3,8 +3,8 @@
 module.exports = app => {
   const { Sequelize, model, getSortInfo, checkUpdate } = app;
   const { Op } = Sequelize;
-  const ModelSchema = require('../schema/pms_grant_restricted_stock_unit.js')(app);
-  const scope = require('../extend/model/scope.js').scope;
+  const ModelSchema = require('../../schema/pms_grant_restricted_stock_unit.js')(app);
+  const scope = require('../../extend/model/scope.js').scope;
   const Model = model.define('pms_grant_restricted_stock_unit', ModelSchema, scope);
 
   /**
@@ -23,27 +23,27 @@ module.exports = app => {
    * @return {string} - 用户uuid
    */
   Model.saveModify = async params => {
-    const { id,  // eslint-disable-line no-unused-vars
-      sn,  // eslint-disable-line no-unused-vars
-      stage_sn,  // eslint-disable-line no-unused-vars
-      employee_sn,  // eslint-disable-line no-unused-vars
-      plan_grant_date,  // eslint-disable-line no-unused-vars
-      plan_grant_price,  // eslint-disable-line no-unused-vars
-      plan_grant_number,  // eslint-disable-line no-unused-vars
-      plan_own_date,  // eslint-disable-line no-unused-vars
-      plan_end_date,  // eslint-disable-line no-unused-vars
-      plan_user_id, // eslint-disable-line no-unused-vars
-      exercicse_status, // eslint-disable-line no-unused-vars
-      stage_status, // eslint-disable-line no-unused-vars
-      plan_status, // eslint-disable-line no-unused-vars
-      name, // eslint-disable-line no-unused-vars
-      description, // eslint-disable-line no-unused-vars
-      delete_status, // eslint-disable-line no-unused-vars
-      enable_status, // eslint-disable-line no-unused-vars
-      status, // eslint-disable-line no-unused-vars
-      last_modifier_id, // eslint-disable-line no-unused-vars
-      last_modifier_name, // eslint-disable-line no-unused-vars
-      last_modified_time,  // eslint-disable-line no-unused-vars     
+    const { id,
+      sn,
+      stage_sn,
+      employee_sn,
+      plan_grant_date,
+      plan_grant_price,
+      plan_grant_number,
+      plan_own_date,
+      plan_end_date,
+      plan_user_id,
+      exercicse_status,
+      stage_status,
+      plan_status,
+      name,
+      description,
+      delete_status,
+      enable_status,
+      status,
+      last_modifier_id,
+      last_modifier_name,
+      last_modified_time,      
     } = params;
     const updateField = Object.assign({},params);
     delete updateField['id'];
