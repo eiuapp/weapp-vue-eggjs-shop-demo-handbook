@@ -252,6 +252,7 @@ module.exports = {
 };
 ```
 
+
 #### 在 `egg/app/controller/trust.js`中如下注释
 
 ```javascript
@@ -277,6 +278,41 @@ module.exports = {
 ```
 
 其中`* @response 200 queryTrustResponse successed`就会向`egg/app/contract/responce/trust.js`中取得 `queryTrustResponse` 的结构.
+
+#### 如果 data.list 中的内容, 不是一个完整的model
+
+那么这个时候,其实,我们依然要把这个特别的 response 要定制,并model.export出来的.
+但是,我们可以,当独放在某个 a.js 文件中.
+
+```javascript
+// `app/contract/response/a.js`
+const contract_model = require('../model.js');
+const { pms_trade_option,
+  pms_grant_option_stage_detail,
+  basic,
+  employee,
+  pms_tax_daily_comfirm_report,
+  tmpTable } = contract_model;
+const { trust_name,
+  broker_name,
+  closing_price } = tmpTable;
+const get_BrokerPmsHandleOptionBuyList_list_element = {
+  exchange_code: { ...pms_trade_option.exchange_code, required: true },
+  company_name: { ...employee.company_name, required: true },
+  ...basic,
+};
+module.exports = {
+  get_BrokerPmsHandleOptionBuyList_list_element, // 成 list_element 结构
+  get_BrokerPmsHandleOptionBuyList_data: { //成 data 结构
+    ...listResponse,
+    list: { type: 'array', itemType: 'get_BrokerPmsHandleOptionBuyList_list_element', required: true },
+  },
+  queryBrokerPmsHandleOptionBuyListResponse: { //成 Response 结构
+    ...commonResponse,
+    data: { type: 'get_BrokerPmsHandleOptionBuyList_data', required: true },
+  },
+};
+```
 
 ### 通过 `egg/app/schema/table.js` 转换成 `egg/app/contract/model.js` 中的 table
 
@@ -308,6 +344,11 @@ http://ergoemacs.org/emacs/elisp_find_replace_text.html
         ;; repeat for other string pairs
         ))
 ```
+如何使用:
+- 先把要转换的 `schemes/sqlTable.js` copy to `egg/app/contract/model.js` 的同一级目录下.
+- `M-x egg-contract-model-js-append-new-talbe-substitude-type-b` 就可以得到 `sqlTable.js` 文件.
+- 把文件中的内容复制到 `egg/app/contract/model.js` 中.
+
 
 ### type date ###
 
